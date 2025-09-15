@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+/* 🌸 Fondo animado general */
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Dancing Script', cursive;
+  background: linear-gradient(-45deg, #fceff1, #ffe4e1, #ffd6d6, #fff0f5);
+  background-size: 400% 400%;
+  animation: fondoMovil 15s ease infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@keyframes fondoMovil {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 💌 Primera sección: carta romántica */
+.primera-seccion {
+  width: 100%;
+  padding: 100px 0 80px;
+  background: linear-gradient(to bottom, #fffafc, #ffe4e1);
+  display: flex;
+  justify-content: center;
+}
+
+.carta-container {
+  perspective: 1000px;
+  position: relative;
+}
+
+.carta {
+  width: 400px;
+  height: 260px;
+  background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
+  border: 2px solid #d88;
+  border-radius: 12px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.carta::before {
+  content: "❤";
+  font-size: 4rem;
+  color: #d33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #ffdde1, #fcb1b1);
+  border-radius: 12px;
+  backface-visibility: hidden;
+  z-index: 2;
+}
+
+.carta::after {
+  content: "💋";
+  font-size: 4rem;
+  color: #d33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 12px;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  z-index: 1;
+}
+
+.carta.abierta {
+  transform: rotateY(180deg);
+}
+
+.papel {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 380px;
+  background-color: #fff;
+  border: 1px solid #d88;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  font-size: 1.6rem;
+  text-align: center;
+  opacity: 0;
+  transition: bottom 1s ease, opacity 1s ease;
+}
+
+.carta.abierta + .papel {
+  bottom: 280px;
+  opacity: 1;
+}
+
+/* 💖 Segunda sección: carrusel de imágenes */
+.carrusel-section {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  padding: 4rem 1rem;
+  background: radial-gradient(circle at top, #fcd5ce 0%, #f8c8dc 100%);
+  border-top: 3px dashed #d88;
+}
+
+.carrusel {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 1s ease, transform 1s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.frase {
+  position: absolute;
+  bottom: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  color: #d33;
+  font-family: 'Dancing Script', cursive;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Flechas */
+.flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255,255,255,0.7);
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.flecha:hover {
+  background-color: rgba(255,255,255,0.9);
+}
+
+.flecha.izq { left: 10px; }
+.flecha.der { right: 10px; }
+
+/* Indicadores */
+.indicadores {
+  margin-top: 1rem;
+}
+
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background-color: #d88;
+  border-radius: 50%;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.dot.active {
+  opacity: 1;
+}
+
+/* 🌹 Sección final emotiva */
+.final-emotiva {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(to bottom, #ffe4e1, #fceff1);
+  border-top: 3px dashed #d88;
+}
+
+.mensaje-final {
+  font-size: 1.6rem;
+  color: #d33;
+  font-family: 'Dancing Script', cursive;
+  margin-bottom: 2rem;
+}
+
+#boton-corazon {
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  animation: latido 1.5s infinite;
+}
+
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* 🌧️ Lluvia de corazones con estilos variados */
+.corazon-lluvia {
+  position: fixed;
+  top: -50px;
+  pointer-events: none;
+  z-index: 9999;
+  animation-name: caerCorazon;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  color: #d33;
+  text-shadow: 0 0 5px #fff;
+  filter: drop-shadow(0 0 6px #ffb6c1);
+}
+
+@keyframes caerCorazon {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(50vh) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
